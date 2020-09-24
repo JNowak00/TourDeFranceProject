@@ -9,7 +9,6 @@ namespace TourDeFrance.Model
     class Cyclist
     {
         public string name { get; set; } 
-        public int enetID { get; set; } 
         public string gender { get; set; } 
         public string countryOrigin { get; set; }
 

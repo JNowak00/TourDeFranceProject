@@ -22,22 +22,23 @@ namespace TourDeFrance.ModelView
 
             XDocument xdoc = XDocument.Load("Cycling-Tour-De-France.xml");
 
-            IEnumerable<XElement> xes = from item in xdoc.Descendants("participant") select item;
+            IEnumerable<XElement> xes = from item in xdoc.Descendants("event_participant") select item;
 
             foreach (var el in xes)
             {
 
-                string name = el.Attribute("name").Value.ToString();
-                string gender = el.Attribute("gender").Value.ToString();
+                string name = el.Element("participant").Attribute("name").Value.ToString();
+                string gender = el.Element("participant").Attribute("gender").Value.ToString();
+                string countryOrigin = el.Element("participant").Attribute("countryFK").Value.ToString();
                 cyclists.Add(new Cyclist
                 {
                     name = name,
-                    gender = gender
-
+                    gender = gender,
+                    countryOrigin = countryOrigin
                 });
 
             }
-            MessageBox.Show(cyclists[1].name);
+            MessageBox.Show(cyclists[3].countryOrigin);
 
         }
     }    
